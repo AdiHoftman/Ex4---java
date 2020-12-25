@@ -1,5 +1,8 @@
 package ex4.geometry;
-/** 
+
+import java.util.Objects;
+
+/**
  * This class represents a 2D circle in the plane. Please make sure you update it 
  * according to the GeoShape interface.
  * Ex4: you can update this class (additional documentation is needed)!
@@ -10,6 +13,10 @@ public class Circle2D implements GeoShape{
 	private Point2D _center;
 	private double _radius;
 
+	public Circle2D(){
+		this._center = new Point2D(0,0);
+		this._radius = 0;
+	}
 	public Circle2D(Point2D cen, double rad) {
 		this._center = new Point2D(cen);
 		this._radius = rad;
@@ -32,7 +39,7 @@ public class Circle2D implements GeoShape{
 
 	@Override
 	public String toString()
-	{ return _center.toString()+", "+_radius;}
+	{ return _center.toString() + "," + this._radius;}
 
 	@Override
 	public boolean contains(Point2D ot) {
@@ -64,7 +71,7 @@ public class Circle2D implements GeoShape{
 
 	@Override
 	public GeoShape copy() {
-		return new Circle2D(_center, _radius);
+		return new Circle2D(this._center, this._radius);
 	}
 
 	@Override
@@ -73,5 +80,14 @@ public class Circle2D implements GeoShape{
 		ans[0] =new Point2D(this._center);
 		ans[1] = new Point2D(ans[0].x(), ans[0].y()+this._radius);
 		return ans;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Circle2D circle2D = (Circle2D) o;
+		return Double.compare(circle2D._radius, _radius) == 0 &&
+				Objects.equals(_center, circle2D._center);
 	}
 }

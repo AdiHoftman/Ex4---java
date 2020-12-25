@@ -2,6 +2,7 @@ package ex4.geometry;
 
 import java.awt.Point;
 import java.util.Comparator;
+import java.util.Objects;
 
 /**
  * This class represents a 2D axis parallel rectangle.
@@ -12,11 +13,10 @@ import java.util.Comparator;
 public class Rect2D implements GeoShape {
 	private Point2D r;
 	private Point2D l;
-	
-	
+
 	public Rect2D(Point2D right, Point2D left) {
-		this.r = new Point2D(right);
-		this.l = new Point2D(left);
+		r = new Point2D(right);
+		l = new Point2D(left);
 	}
 
 	public Point2D getRight() {
@@ -69,5 +69,14 @@ public class Rect2D implements GeoShape {
 	@Override
 	public String toString() {
 		return this.r.toString() + "," + this.l.toString();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Rect2D rect2D = (Rect2D) o;
+		return Objects.equals(r, rect2D.r) &&
+				Objects.equals(l, rect2D.l);
 	}
 }
