@@ -13,10 +13,6 @@ public class Circle2D implements GeoShape{
 	private Point2D _center;
 	private double _radius;
 
-	public Circle2D(){
-		this._center = new Point2D(0,0);
-		this._radius = 0;
-	}
 	public Circle2D(Point2D cen, double rad) {
 		this._center = new Point2D(cen);
 		if (rad <= -1) {
@@ -25,11 +21,6 @@ public class Circle2D implements GeoShape{
 		} else {
 			this._radius = rad;
 		}
-	}
-
-	public Circle2D(Circle2D c) {
-		this._center = c._center;
-		this._radius = c._radius;
 	}
 
 	/**

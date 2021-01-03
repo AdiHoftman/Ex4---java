@@ -18,7 +18,7 @@ public class Circle2DTest {
         Point2D p = new Point2D(1,3);
         Circle2D c = new Circle2D(p, 10);
         assertEquals(p, c.center());
-        assertEquals(10,c.radius());
+        assertEquals(10,c.getRadius());
     }
 
     @Test

@@ -1,8 +1,5 @@
 package ex4.tests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import java.awt.Point;
 import java.util.Arrays;
 
@@ -12,8 +9,28 @@ import org.junit.jupiter.api.Test;
 
 import ex4.geometry.Point2D;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class Point2DTest {
-	
+
+	@Test
+	void x(){
+		Point2D p1 = new Point2D(-1,2);
+		Point2D p2 = new Point2D(-1, 0);
+		assertEquals(p1.x(), p2.x());
+		assertNotEquals(1, p1.x());
+	}
+
+	@Test
+	void y(){
+		Point2D p1 = new Point2D(2,-3);
+		Point2D p2 = new Point2D(3, -3);
+		assertEquals(p1.y(), p2.y());
+		assertNotEquals(3, p1.y());
+	}
+
+
+
 	@Test
 	void add(){
 		Point2D p1 = new Point2D(3,5);
@@ -32,6 +49,15 @@ public class Point2DTest {
 		Point2D p2 = new Point2D(5,6);
 		double dist = p1.distance(p2);
 		assertEquals(Math.sqrt(13), dist);
+	}
+
+	@Test
+	void close2equals(){
+		Point2D p1 = new Point2D(0,0);
+		Point2D p2 = new Point2D(-1,-1);
+		Point2D p3 = new Point2D(1,0);
+		assertFalse(p1.close2equals(p2, -1));
+		assertTrue(p1.close2equals(p3, 2.01));
 	}
 
 	@Test

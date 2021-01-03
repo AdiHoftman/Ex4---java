@@ -4,9 +4,6 @@ import ex4.geometry.GeoShape;
 import ex4.geometry.Point2D;
 import ex4.geometry.Rect2D;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Rect2DTest {
@@ -22,6 +19,12 @@ public class Rect2DTest {
 
     @Test
     void contains(){
+        Point2D point1 = new Point2D(1,2);
+        Point2D point2 = new Point2D(1,2);
+        Point2D point3 = new Point2D(-1,1);
+        Point2D point4 = new Point2D(1,2);
+        Rect2D rect = new Rect2D(point1, point2);
+        assertFalse(rect.contains(point3));
         Point2D p1 = new Point2D(-2,6);
         Point2D p2 = new Point2D(-5,4);
         Rect2D r = new Rect2D(p1,p2);
@@ -29,10 +32,15 @@ public class Rect2DTest {
         Point2D p4 = new Point2D(-5,3);
         assertTrue(r.contains(p3));
         assertFalse(r.contains(p4));
+        assertEquals(point1.centerOfMass(), point4.centerOfMass());
     }
 
     @Test
     void centerOfMass() {
+        Point2D point1 = new Point2D(1,2);
+        Point2D point2 = new Point2D(1,2);
+        Rect2D rect = new Rect2D(point1, point2);
+        assertEquals(point1, rect.centerOfMass());
         Point2D p1 = new Point2D(5,7);
         Point2D p2 = new Point2D(1,4);
         Rect2D r = new Rect2D(p1, p2);
@@ -53,7 +61,7 @@ public class Rect2DTest {
         Point2D p1 = new Point2D(-0.7, -10);
         Point2D p2 = new Point2D(-3, -15.7);
         Rect2D r = new Rect2D(p1, p2);
-        assertEquals(15.999999999999998, r.perimeter());
+        assertEquals(16, r.perimeter(), 0.01);
     }
 
     @Test
