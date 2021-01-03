@@ -88,8 +88,7 @@ public class Point2D implements GeoShape{
 	
     @Override
 	public boolean contains(Point2D ot) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.equals(ot);
 	}
 	@Override
 	public Point2D centerOfMass() {
