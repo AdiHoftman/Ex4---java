@@ -5,10 +5,7 @@ package ex4;
  * @author I2CS
  */
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
 import ex4.geometry.*;
 
 public class GUIShape implements GUI_Shape{
@@ -23,10 +20,14 @@ public class GUIShape implements GUI_Shape{
 	public GUIShape(){
 		this.geoShape = null;
 		this.filled = false;
-		this. color = new Color(000,000, 000);
+		this.color = new Color(000,000, 000);
 		this.tag = 0;
 	}
 
+	/**
+	 * Constructor that get GeoShape.
+	 * @param geo
+	 */
 	public GUIShape(GeoShape geo){
 		this.geoShape = geo;
 		this.filled = false;
@@ -42,7 +43,7 @@ public class GUIShape implements GUI_Shape{
 	 * @param t
 	 */
 	public GUIShape(GeoShape geo,boolean f ,Color c, int t){
-		this.geoShape = geo;
+		this.geoShape = geo.copy();
 		this.filled = f;
 		this.color = c;
 		this.tag = t;
@@ -118,18 +119,21 @@ public class GUIShape implements GUI_Shape{
 
 	/**
 	 * 
-	 * @return
+	 * @return a copy GUI_Shape.
 	 */
 	@Override
 	public GUI_Shape copy() {
 		return new GUIShape(this.geoShape, this.filled, this.color, this.tag);
 	}
+
 	@Override
 	public String toString() {
-		return "GUIShape," + this.geoShape
-				+ "," + this.filled
-				+ "," + this.color.getRGB()
-				+ "," + this.tag;
+		return "GUIShape," +
+				((int)this.color.getRGB()&0xffffff ) +
+				"," + this.filled +
+				"," + this.tag +
+				"," + this.geoShape.getClass().getSimpleName() +
+				"," + this.getShape() + "\n";
 	}
 
 	@Override

@@ -13,13 +13,13 @@ public class Circle2D implements GeoShape{
 	private Point2D _center;
 	private double _radius;
 
-	public Circle2D(Point2D cen, double rad) {
-		this._center = new Point2D(cen);
-		if (rad <= -1) {
+	public Circle2D(Point2D c, double r) {
+		this._center = new Point2D(c);
+		if (r <= -1) {
 			this._radius = 1;
-			System.err.println("The radius can't be negative!!");
+			System.err.println("Radius can't be a negative number");
 		} else {
-			this._radius = rad;
+			this._radius = r;
 		}
 	}
 
@@ -44,7 +44,7 @@ public class Circle2D implements GeoShape{
 
 	@Override
 	public String toString()
-	{ return _center.toString() + "," + this._radius;}
+	{ return _center.toString() + "," + this._radius ;}
 
 	/**
 	 * Checks if point is in the circle or not

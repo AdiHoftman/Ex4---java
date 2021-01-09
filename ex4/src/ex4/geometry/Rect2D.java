@@ -12,14 +12,14 @@ public class Rect2D implements GeoShape {
 	private Point2D r;
 	private Point2D l;
 
-	public Rect2D() {
-		this.r = null;
-		this.l = null;
-	}
-
+	/**
+	 * Constructor that get 2 points.
+	 * @param right
+	 * @param left
+	 */
 	public Rect2D(Point2D right, Point2D left) {
-		r = new Point2D(right);
-		l = new Point2D(left);
+		this.r = new Point2D(right);
+		this.l = new Point2D(left);
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class Rect2D implements GeoShape {
 	
 	@Override
 	public String toString() {
-		return this.r.toString() + "," + this.l.toString();
+		return this.r + "," + this.l;
 	}
 
 	@Override

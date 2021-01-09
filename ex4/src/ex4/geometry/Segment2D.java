@@ -13,7 +13,12 @@ import java.util.Objects;
 public class Segment2D implements GeoShape{
 	private Point2D r;
 	private Point2D l;
-	
+
+	/**
+	 * Constructor that get two points.
+	 * @param right
+	 * @param left
+	 */
 	public Segment2D(Point2D right, Point2D left) {
 		if (left.x() > right.x()) {
 			this.l = new Point2D(right);
@@ -90,7 +95,7 @@ public class Segment2D implements GeoShape{
 	}
 	@Override
 	public String toString() {
-		return this.r.toString() + "," + this.l.toString();
+		return this.l + "," + this.r;
 	}
 
 	@Override
